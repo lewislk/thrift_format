@@ -16,9 +16,9 @@ func main() {
 	}()
 	app := &cli.App{
 		Name:    "thrift_format",
-		Usage:   "format thrift file",
+		Usage:   "thrift_format -f `FilePath`",
 		Action:  action,
-		Version: "0.0.1",
+		Version: "0.0.2",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "file",
@@ -35,9 +35,15 @@ func main() {
 				Value:       true,
 			},
 			&cli.StringFlag{
-				Name:     "lines",
-				Aliases:  []string{"l"},
-				Usage:    "`lines` selected to format",
+				Name:     "line_start",
+				Aliases:  []string{"ls"},
+				Usage:    "line select start",
+				Required: false,
+			},
+			&cli.StringFlag{
+				Name:     "line_end",
+				Aliases:  []string{"le"},
+				Usage:    "line select end",
 				Required: false,
 			},
 		},
@@ -50,7 +56,9 @@ func main() {
 func action(ctx *cli.Context) error {
 	filePath := ctx.String("file")
 	color.Green("file path: %s", filePath)
-	lines := ctx.String("lines")
-	color.Green("lines: %s", lines)
+	lineStart := ctx.String("line_start")
+	color.Green("line_start: %s", lineStart)
+	lineEnd := ctx.String("line_end")
+	color.Green("line_end: %s", lineEnd)
 	return nil
 }
