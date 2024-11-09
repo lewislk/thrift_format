@@ -1,3 +1,7 @@
+gitee.com/liukunc9/go-utils v0.0.1 h1:Bkxmy3PSjAaBXU1+U3eetrh0PbeaCzJgmdcQv/zfLug=
+gitee.com/liukunc9/go-utils v0.0.1/go.mod h1:KjzvQIpLTaq/d6COF8lLdEQztoC1Hf6dYF3nC5bL7tU=
+github.com/cloudwego/thriftgo v0.2.0 h1:gDNxU1CmNkwwe/I9UfuCTIc1DXu5FVFa2cMWwT61e50=
+github.com/cloudwego/thriftgo v0.2.0/go.mod h1:aZxiVX7KJdonZwwnapZEMDAAGUGk9WCIkNU3YoVjbpg=
 github.com/cpuguy83/go-md2man/v2 v2.0.5 h1:ZtcqGrnekaHpVLArFSe4HK5DoKx1T0rq2DwVB0alcyc=
 github.com/cpuguy83/go-md2man/v2 v2.0.5/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=

@@ -3,6 +3,8 @@ module gitee.com/liukunc9/thrift_format
 go 1.21
 
 require (
+	gitee.com/liukunc9/go-utils v0.0.1
+	github.com/cloudwego/thriftgo v0.2.0
 	github.com/fatih/color v1.18.0
 	github.com/urfave/cli/v2 v2.27.5
 )

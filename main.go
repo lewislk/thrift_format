@@ -1,6 +1,7 @@
 package main
 
 import (
+	"gitee.com/liukunc9/thrift_format/formater"
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
 	"os"
@@ -34,17 +35,24 @@ func main() {
 				Required:    false,
 				Value:       true,
 			},
-			&cli.StringFlag{
+			&cli.Int64Flag{
 				Name:     "line_start",
 				Aliases:  []string{"ls"},
 				Usage:    "line select start",
 				Required: false,
 			},
-			&cli.StringFlag{
+			&cli.Int64Flag{
 				Name:     "line_end",
 				Aliases:  []string{"le"},
 				Usage:    "line select end",
 				Required: false,
+			},
+			&cli.BoolFlag{
+				Name:        "verbose",
+				DefaultText: "false",
+				Usage:       "print debug log",
+				Required:    false,
+				Value:       false,
 			},
 		},
 	}
@@ -54,11 +62,6 @@ func main() {
 }
 
 func action(ctx *cli.Context) error {
-	filePath := ctx.String("file")
-	color.Green("file path: %s", filePath)
-	lineStart := ctx.String("line_start")
-	color.Green("line_start: %s", lineStart)
-	lineEnd := ctx.String("line_end")
-	color.Green("line_end: %s", lineEnd)
-	return nil
+	f := formater.NewFormater(ctx)
+	return f.DoFormat()
 }
