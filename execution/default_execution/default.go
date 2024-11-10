@@ -1,11 +1,11 @@
 package default_execution
 
 import (
-	"gitee.com/liukunc9/thrift_format/consts"
-	"gitee.com/liukunc9/thrift_format/execution"
-	"gitee.com/liukunc9/thrift_format/execution/base_execution"
-	"gitee.com/liukunc9/thrift_format/mctx"
 	"github.com/cloudwego/thriftgo/parser/token"
+	"github.com/liukunc9/thrift_format/consts"
+	"github.com/liukunc9/thrift_format/execution"
+	"github.com/liukunc9/thrift_format/execution/base_execution"
+	"github.com/liukunc9/thrift_format/mctx"
 )
 
 type DefaultExecution struct {

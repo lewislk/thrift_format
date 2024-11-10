@@ -1,8 +1,8 @@
 package mctx
 
 import (
-	"gitee.com/liukunc9/thrift_format/consts"
 	"github.com/cloudwego/thriftgo/parser"
+	"github.com/liukunc9/thrift_format/consts"
 )
 
 type Context struct {

@@ -3,10 +3,10 @@ package formater
 import (
 	"errors"
 	"fmt"
-	"gitee.com/liukunc9/go-utils/files"
-	"gitee.com/liukunc9/thrift_format/executor"
-	"gitee.com/liukunc9/thrift_format/logs"
 	"github.com/cloudwego/thriftgo/parser"
+	"github.com/liukunc9/go-utils/files"
+	"github.com/liukunc9/thrift_format/executor"
+	"github.com/liukunc9/thrift_format/logs"
 	"github.com/urfave/cli/v2"
 )
 

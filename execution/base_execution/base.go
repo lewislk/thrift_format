@@ -1,8 +1,8 @@
 package base_execution
 
 import (
-	"gitee.com/liukunc9/thrift_format/mctx"
 	"github.com/cloudwego/thriftgo/parser/token"
+	"github.com/liukunc9/thrift_format/mctx"
 )
 
 var blockTypeList = []token.Tok{

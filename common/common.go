@@ -3,10 +3,10 @@ package common
 import (
 	"bytes"
 	"fmt"
-	"gitee.com/liukunc9/go-utils/strs"
-	"gitee.com/liukunc9/thrift_format/logs"
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/parser/token"
+	"github.com/liukunc9/go-utils/strs"
+	"github.com/liukunc9/thrift_format/logs"
 	"strconv"
 	"strings"
 )

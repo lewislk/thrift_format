@@ -1,13 +1,13 @@
 package factory
 
 import (
-	"gitee.com/liukunc9/thrift_format/execution"
-	"gitee.com/liukunc9/thrift_format/execution/const_execution"
-	"gitee.com/liukunc9/thrift_format/execution/default_execution"
-	"gitee.com/liukunc9/thrift_format/execution/enum_execution"
-	"gitee.com/liukunc9/thrift_format/execution/struct_execution"
-	"gitee.com/liukunc9/thrift_format/mctx"
 	"github.com/cloudwego/thriftgo/parser/token"
+	"github.com/liukunc9/thrift_format/execution"
+	"github.com/liukunc9/thrift_format/execution/const_execution"
+	"github.com/liukunc9/thrift_format/execution/default_execution"
+	"github.com/liukunc9/thrift_format/execution/enum_execution"
+	"github.com/liukunc9/thrift_format/execution/struct_execution"
+	"github.com/liukunc9/thrift_format/mctx"
 )
 
 type Constructor = func(ctx *mctx.Context) execution.Execution

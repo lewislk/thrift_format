@@ -1,11 +1,11 @@
 package executor
 
 import (
-	"gitee.com/liukunc9/thrift_format/common"
-	"gitee.com/liukunc9/thrift_format/execution"
-	"gitee.com/liukunc9/thrift_format/factory"
-	"gitee.com/liukunc9/thrift_format/mctx"
 	"github.com/cloudwego/thriftgo/parser"
+	"github.com/liukunc9/thrift_format/common"
+	"github.com/liukunc9/thrift_format/execution"
+	"github.com/liukunc9/thrift_format/factory"
+	"github.com/liukunc9/thrift_format/mctx"
 	"strings"
 )
 

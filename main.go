@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gitee.com/liukunc9/thrift_format/formater"
-	"gitee.com/liukunc9/thrift_format/logs"
+	"github.com/liukunc9/thrift_format/formater"
+	"github.com/liukunc9/thrift_format/logs"
 	"github.com/urfave/cli/v2"
 	"os"
 	"runtime/debug"

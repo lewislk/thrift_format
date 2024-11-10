@@ -5,7 +5,7 @@
 
 # 安装
 ```shell
-go install gitee.com/liukunc9/thrift_format@latest
+go install github.com/liukunc9/thrift_format@latest
 ```
 
 # IDEA内置宏参数
