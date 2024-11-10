@@ -21,22 +21,32 @@ type StructExecution struct {
 	annoMap    map[int32]string
 	defaultMap map[int32]string
 
-	idMaxLen, requireTypeMaxLen, typeMaxLen, nameMaxLen, annotationMaxLen, defaultMaxLen int
+	idMaxLen, requireTypeMaxLen, typeMaxLen, nameMaxLen, annotationMaxLen, defaultMaxLen, paramBeforeMaxLen int
 }
 
 func NewStructExecution(ctx *mctx.Context) execution.Execution {
 	fieldMap := make(map[int32]*parser.Field)
 	annoMap := make(map[int32]string)
 	defaultMap := make(map[int32]string)
-	idMaxLen, requireTypeMaxLen, typeMaxLen, nameMaxLen, annotationMaxLen, defaultMaxLen := 0, 0, 0, 0, 0, 0
+	idMaxLen, requireTypeMaxLen, typeMaxLen, nameMaxLen, annotationMaxLen, defaultMaxLen, paramBeforeMaxLen := 0, 0, 0, 0, 0, 0, 0
 	name := common.FindFirst(ctx.Lines[ctx.CurIdx], token.Identifier)
 	curStruct := ctx.StructMap[name]
 	for _, field := range curStruct.Fields {
 		fieldMap[field.ID] = field
-		idMaxLen = utils.Max(idMaxLen, len(fmt.Sprintf("%d", field.ID)))
-		requireTypeMaxLen = utils.Max(requireTypeMaxLen, len(getRequireType(field.GetRequiredness())))
-		typeMaxLen = utils.Max(typeMaxLen, len(fmt.Sprintf("%v", field.Type)))
+		idLen := len(fmt.Sprintf("%d", field.ID))
+		idMaxLen = utils.Max(idMaxLen, idLen)
+		requireTypeLen := len(getRequireType(field.GetRequiredness()))
+		requireTypeMaxLen = utils.Max(requireTypeMaxLen, requireTypeLen)
+		typeLen := len(fmt.Sprintf("%v", field.Type))
+		typeMaxLen = utils.Max(typeMaxLen, typeLen)
 		nameMaxLen = utils.Max(nameMaxLen, len(field.Name))
+		if requireTypeLen > 0 {
+			paramBeforeLen := idLen + 2 + requireTypeLen + 1 + typeLen
+			paramBeforeMaxLen = utils.Max(paramBeforeMaxLen, paramBeforeLen)
+		} else {
+			paramBeforeLen := idLen + 2 + typeLen
+			paramBeforeMaxLen = utils.Max(paramBeforeMaxLen, paramBeforeLen)
+		}
 		// default value
 		defaultValue := getDefaultValue(field)
 		defaultMap[field.ID] = defaultValue
@@ -61,6 +71,7 @@ func NewStructExecution(ctx *mctx.Context) execution.Execution {
 		nameMaxLen:        nameMaxLen,
 		annotationMaxLen:  annotationMaxLen,
 		defaultMaxLen:     defaultMaxLen,
+		paramBeforeMaxLen: paramBeforeMaxLen,
 	}
 }
 
@@ -92,11 +103,12 @@ func (e *StructExecution) FormatLine(line string) string {
 	requireType := getRequireType(field.Requiredness)
 
 	var output string
+	format := e.dynamicFormat(field, requireType)
 	if len(requireType) > 0 {
-		output = fmt.Sprintf(e.dynamicFormat(field, requireType), field.ID, requireType, field.Type, field.Name,
+		output = fmt.Sprintf(format, field.ID, requireType, field.Type, field.Name,
 			e.defaultMap[fieldID], e.annoMap[fieldID], comment)
 	} else {
-		output = fmt.Sprintf(e.dynamicFormat(field, requireType), field.ID, field.Type, field.Name,
+		output = fmt.Sprintf(format, field.ID, field.Type, field.Name,
 			e.defaultMap[fieldID], e.annoMap[fieldID], comment)
 	}
 	return output
@@ -107,21 +119,16 @@ func (e *StructExecution) IsFinish() bool {
 }
 
 func (e *StructExecution) dynamicFormat(field *parser.Field, requireType string) string {
-	// 计算参数名称之前的最大长度。示例: 8: optional string score_url,即计算"8: optional string"的长度
-	maxLenBeforeParamName := e.idMaxLen + 1 + 1 + e.typeMaxLen
-	if e.requireTypeMaxLen > 0 {
-		maxLenBeforeParamName += e.requireTypeMaxLen + 1
-	}
 	// 将所有不足长度的，补充空格到类型后面
 	requireLen := len(requireType)
 	if len(requireType) > 0 {
 		// 计算 "8: optional "的长度
-		typeFormatLen := maxLenBeforeParamName - (len(fmt.Sprintf("%d", field.ID)) + 1 + 1 + requireLen + 1)
+		typeFormatLen := e.paramBeforeMaxLen - (len(fmt.Sprintf("%d", field.ID)) + 1 + 1 + requireLen + 1)
 		return fmt.Sprintf("    %%d: %%s %%-%dv %%-%ds%%-%ds %%-%ds %%s",
 			typeFormatLen, e.nameMaxLen, e.defaultMaxLen, e.annotationMaxLen)
 	} else {
 		// 计算"8: "的长度
-		typeFormatLen := maxLenBeforeParamName - (len(fmt.Sprintf("%d", field.ID)) + 1 + 1)
+		typeFormatLen := e.paramBeforeMaxLen - (len(fmt.Sprintf("%d", field.ID)) + 1 + 1)
 		return fmt.Sprintf("    %%d: %%-%dv %%-%ds%%-%ds %%-%ds %%s",
 			typeFormatLen, e.nameMaxLen, e.defaultMaxLen, e.annotationMaxLen)
 	}
