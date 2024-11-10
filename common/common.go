@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"gitee.com/liukunc9/go-utils/strs"
 	"gitee.com/liukunc9/thrift_format/logs"
-	"gitee.com/liukunc9/thrift_format/utils"
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/parser/token"
 	"strconv"
@@ -81,10 +80,10 @@ func GetAnnotation(annotations []*parser.Annotation) string {
 
 func FormatComment(line string) string {
 	var comment string
-	if comment = utils.FindFirst(line, token.LineComment); !strs.IsEmpty(comment) {
+	if comment = FindFirst(line, token.LineComment); !strs.IsEmpty(comment) {
 		idx := strings.Index(comment, "//")
 		return fmt.Sprintf(`// %s`, strings.TrimSpace(comment[idx+2:]))
-	} else if comment = utils.FindFirst(line, token.UnixComment); !strs.IsEmpty(comment) {
+	} else if comment = FindFirst(line, token.UnixComment); !strs.IsEmpty(comment) {
 		idx := strings.Index(comment, "#")
 		return fmt.Sprintf(`# %s`, strings.TrimSpace(comment[idx+1:]))
 	}

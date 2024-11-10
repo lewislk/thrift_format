@@ -29,22 +29,22 @@ func NewStructExecution(ctx *mctx.Context) execution.Execution {
 	annoMap := make(map[int32]string)
 	defaultMap := make(map[int32]string)
 	idMaxLen, requireTypeMaxLen, typeMaxLen, nameMaxLen, annotationMaxLen, defaultMaxLen := 0, 0, 0, 0, 0, 0
-	name := utils.FindFirst(ctx.Lines[ctx.CurIdx], token.Identifier)
+	name := common.FindFirst(ctx.Lines[ctx.CurIdx], token.Identifier)
 	curStruct := ctx.StructMap[name]
 	for _, field := range curStruct.Fields {
 		fieldMap[field.ID] = field
-		idMaxLen = max(idMaxLen, len(fmt.Sprintf("%d", field.ID)))
-		requireTypeMaxLen = max(requireTypeMaxLen, len(getRequireType(field.GetRequiredness())))
-		typeMaxLen = max(typeMaxLen, len(fmt.Sprintf("%v", field.Type)))
-		nameMaxLen = max(nameMaxLen, len(field.Name))
+		idMaxLen = utils.Max(idMaxLen, len(fmt.Sprintf("%d", field.ID)))
+		requireTypeMaxLen = utils.Max(requireTypeMaxLen, len(getRequireType(field.GetRequiredness())))
+		typeMaxLen = utils.Max(typeMaxLen, len(fmt.Sprintf("%v", field.Type)))
+		nameMaxLen = utils.Max(nameMaxLen, len(field.Name))
 		// default value
 		defaultValue := getDefaultValue(field)
 		defaultMap[field.ID] = defaultValue
-		defaultMaxLen = max(defaultMaxLen, len(defaultValue))
+		defaultMaxLen = utils.Max(defaultMaxLen, len(defaultValue))
 		// annotation
 		annotation := common.GetAnnotation(field.Annotations)
 		annoMap[field.GetID()] = annotation
-		annotationMaxLen = max(annotationMaxLen, len(annotation))
+		annotationMaxLen = utils.Max(annotationMaxLen, len(annotation))
 	}
 
 	ctx.Status = consts.InStruct
@@ -82,7 +82,7 @@ func (e *StructExecution) Process(prefixType token.Tok) string {
 }
 
 func (e *StructExecution) FormatLine(line string) string {
-	fieldID := int32(conv.Str2Int64(utils.FindFirst(line, token.IntLiteral), 0))
+	fieldID := int32(conv.Str2Int64(common.FindFirst(line, token.IntLiteral), 0))
 	field, ok := e.fieldMap[fieldID]
 	if !ok {
 		logs.ErrorF(`line: '%s' can not find field of id: %v`, line, field)

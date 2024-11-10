@@ -31,10 +31,10 @@ func NewConstExecution(ctx *mctx.Context) execution.Execution {
 
 	for idx := ctx.CurIdx; idx < len(ctx.Lines); idx++ {
 		currentLine := ctx.Lines[idx]
-		if utils.GetPrefixType(currentLine) != token.Const {
+		if common.GetPrefixType(currentLine) != token.Const {
 			break
 		}
-		currentConst := utils.FindConst(currentLine, ctx.Constants)
+		currentConst := common.FindConst(currentLine, ctx.Constants)
 		if currentConst == nil {
 			continue
 		}
@@ -42,11 +42,11 @@ func NewConstExecution(ctx *mctx.Context) execution.Execution {
 		typeStr := fmt.Sprintf("%v", currentConst.Type)
 		value := common.ConvertConstValue2Str(currentConst.Value)
 		valueMap[currentConst.Name] = value
-		typeMaxLen = max(typeMaxLen, len(typeStr))
-		nameMaxLen = max(nameMaxLen, len(currentConst.Name))
-		valueMaxLen = max(valueMaxLen, getValueLen(value))
+		typeMaxLen = utils.Max(typeMaxLen, len(typeStr))
+		nameMaxLen = utils.Max(nameMaxLen, len(currentConst.Name))
+		valueMaxLen = utils.Max(valueMaxLen, getValueLen(value))
 		anno := common.GetAnnotation(currentConst.GetAnnotations())
-		annoMaxLen = max(annoMaxLen, len(anno))
+		annoMaxLen = utils.Max(annoMaxLen, len(anno))
 		annoMap[currentConst.Name] = anno
 	}
 	format := fmt.Sprintf("const %%-%ds %%-%ds = %%-%ds %%-%ds %%s",

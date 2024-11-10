@@ -1,6 +1,6 @@
 module gitee.com/liukunc9/thrift_format
 
-go 1.21
+go 1.18
 
 require (
 	gitee.com/liukunc9/go-utils v0.0.2

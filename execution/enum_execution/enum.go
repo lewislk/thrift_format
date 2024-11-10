@@ -26,14 +26,14 @@ func NewEnumExecution(ctx *mctx.Context) execution.Execution {
 	valueMap := make(map[string]*parser.EnumValue)
 	annoMap := make(map[string]string)
 
-	name := utils.FindFirst(ctx.Lines[ctx.CurIdx], token.Identifier)
+	name := common.FindFirst(ctx.Lines[ctx.CurIdx], token.Identifier)
 	curEnum := ctx.EnumMap[name]
 	for _, value := range curEnum.Values {
 		valueMap[value.Name] = value
-		nameMaxLen = max(nameMaxLen, len(value.Name))
-		valueMaxLen = max(valueMaxLen, len(fmt.Sprintf(`%d`, value.Value)))
+		nameMaxLen = utils.Max(nameMaxLen, len(value.Name))
+		valueMaxLen = utils.Max(valueMaxLen, len(fmt.Sprintf(`%d`, value.Value)))
 		anno := common.GetAnnotation(value.Annotations)
-		annoMaxLen = max(annoMaxLen, len(anno))
+		annoMaxLen = utils.Max(annoMaxLen, len(anno))
 		annoMap[value.Name] = anno
 	}
 
@@ -79,7 +79,7 @@ func (e *EnumExecution) IsFinish() bool {
 
 func (e *EnumExecution) FormatLine(line string) string {
 	comment := common.FormatComment(line)
-	valueName := utils.FindFirst(line, token.Identifier)
+	valueName := common.FindFirst(line, token.Identifier)
 	value, ok := e.valueMap[valueName]
 	if !ok {
 		logs.ErrorF(`line: '%s' can not find value`, line)

@@ -1,10 +1,10 @@
 package executor
 
 import (
+	"gitee.com/liukunc9/thrift_format/common"
 	"gitee.com/liukunc9/thrift_format/execution"
 	"gitee.com/liukunc9/thrift_format/factory"
 	"gitee.com/liukunc9/thrift_format/mctx"
-	"gitee.com/liukunc9/thrift_format/utils"
 	"github.com/cloudwego/thriftgo/parser"
 	"strings"
 )
@@ -46,7 +46,7 @@ func (e *Executor) Exec(startLine, endLine int64) (string, error) {
 			result = append(result, line)
 			continue
 		}
-		prefixType := utils.GetPrefixType(line)
+		prefixType := common.GetPrefixType(line)
 		if e.curExecution == nil {
 			e.curExecution = factory.GetExecution(e.ctx, prefixType)
 		} else {

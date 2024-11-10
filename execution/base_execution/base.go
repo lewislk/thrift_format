@@ -3,7 +3,6 @@ package base_execution
 import (
 	"gitee.com/liukunc9/thrift_format/mctx"
 	"github.com/cloudwego/thriftgo/parser/token"
-	"slices"
 )
 
 var blockTypeList = []token.Tok{
@@ -17,7 +16,12 @@ type BaseExecution struct {
 }
 
 func (e *BaseExecution) IsBlockType(prefixType token.Tok) bool {
-	return slices.Contains(blockTypeList, prefixType)
+	for _, blockType := range blockTypeList {
+		if prefixType == blockType {
+			return true
+		}
+	}
+	return false
 }
 
 func (e *BaseExecution) IsMatch(prefixType token.Tok) bool {
