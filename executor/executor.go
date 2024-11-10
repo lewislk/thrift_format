@@ -42,7 +42,7 @@ func (e *Executor) Exec(startLine, endLine int64) (string, error) {
 	for offset, line := range e.ctx.Lines {
 		e.ctx.CurIdx = offset
 		lineNum := int64(offset + 1)
-		if startLine > 0 && endLine > 0 && (lineNum < startLine || lineNum > endLine) {
+		if startLine > 0 && endLine > 0 && endLine > startLine && (lineNum < startLine || lineNum > endLine) {
 			result = append(result, line)
 			continue
 		}
