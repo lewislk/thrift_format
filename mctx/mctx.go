@@ -6,7 +6,11 @@ import (
 )
 
 type Context struct {
-	Status    consts.Status
+	Lines     []string
 	StructMap map[string]*parser.StructLike
 	EnumMap   map[string]*parser.Enum
+	Constants []*parser.Constant
+
+	Status consts.Status
+	CurIdx int
 }
