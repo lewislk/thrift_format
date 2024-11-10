@@ -2,7 +2,7 @@ package main
 
 import (
 	"gitee.com/liukunc9/thrift_format/formater"
-	"github.com/fatih/color"
+	"gitee.com/liukunc9/thrift_format/logs"
 	"github.com/urfave/cli/v2"
 	"os"
 	"runtime/debug"
@@ -11,15 +11,15 @@ import (
 func main() {
 	defer func() {
 		if r := recover(); r != nil {
-			color.Red("panic: %v", r)
-			color.Red("%s", string(debug.Stack()))
+			logs.ErrorF("panic: %v", r)
+			logs.DebugF("%s", string(debug.Stack()))
 		}
 	}()
 	app := &cli.App{
 		Name:    "thrift_format",
 		Usage:   "thrift_format -f `FilePath`",
 		Action:  action,
-		Version: "0.0.2",
+		Version: "0.0.3",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "file",
@@ -57,7 +57,7 @@ func main() {
 		},
 	}
 	if err := app.Run(os.Args); err != nil {
-		color.Red("%v", err)
+		logs.ErrorF("%v", err)
 	}
 }
 
