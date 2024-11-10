@@ -72,11 +72,10 @@ func (e *ConstExecution) Process(prefixType token.Tok) string {
 	line := e.Ctx.Lines[e.Ctx.CurIdx]
 	output := line
 	switch prefixType {
-	case token.IntLiteral: // in field
+	case token.Const: // in field
 		output = e.FormatLine(line)
-	case token.RBrace: // exit struct
-		e.Ctx.Status = consts.InOut
 	default:
+		e.Ctx.Status = consts.InOut
 	}
 	return output
 }
@@ -89,7 +88,7 @@ func (e *ConstExecution) FormatLine(line string) string {
 	comment := common.FormatComment(line)
 	c, ok := e.constMap[line]
 	if !ok {
-		logs.Error(`line: '%v' can not find cost value`, line)
+		logs.ErrorF(`line: '%v' can not find cost value`, line)
 		return line
 	}
 	value := e.valueMap[c.Name]

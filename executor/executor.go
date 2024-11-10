@@ -1,7 +1,6 @@
 package executor
 
 import (
-	"gitee.com/liukunc9/thrift_format/consts"
 	"gitee.com/liukunc9/thrift_format/execution"
 	"gitee.com/liukunc9/thrift_format/factory"
 	"gitee.com/liukunc9/thrift_format/mctx"
@@ -15,7 +14,6 @@ type Executor struct {
 
 	thrift *parser.Thrift
 
-	status       consts.Status
 	curExecution execution.Execution
 }
 

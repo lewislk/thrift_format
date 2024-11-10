@@ -64,7 +64,7 @@ func (e *EnumExecution) Process(prefixType token.Tok) string {
 	line := e.Ctx.Lines[e.Ctx.CurIdx]
 	output := line
 	switch prefixType {
-	case token.IntLiteral: // in field
+	case token.Identifier: // in field
 		output = e.FormatLine(line)
 	case token.RBrace: // exit struct
 		e.Ctx.Status = consts.InOut
@@ -82,7 +82,7 @@ func (e *EnumExecution) FormatLine(line string) string {
 	valueName := utils.FindFirst(line, token.Identifier)
 	value, ok := e.valueMap[valueName]
 	if !ok {
-		logs.Error(`line: '%s' can not find value`, line)
+		logs.ErrorF(`line: '%s' can not find value`, line)
 		return line
 	}
 	return fmt.Sprintf(e.format, value.Name, value.Value, e.annoMap[value.Name], comment)

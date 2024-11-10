@@ -22,7 +22,7 @@ func NewDefaultExecution(ctx *mctx.Context) execution.Execution {
 }
 
 func (e *DefaultExecution) IsMatch(prefixType token.Tok) bool {
-	return e.Ctx.Status == consts.InOut
+	return !e.IsBlockType(prefixType) && e.Ctx.Status == consts.InOut
 }
 
 func (e *DefaultExecution) Process(prefixType token.Tok) string {

@@ -85,7 +85,7 @@ func (e *StructExecution) FormatLine(line string) string {
 	fieldID := int32(conv.Str2Int64(utils.FindFirst(line, token.IntLiteral), 0))
 	field, ok := e.fieldMap[fieldID]
 	if !ok {
-		logs.Error(`line: '%s' can not find field of id: %v`, line, field)
+		logs.ErrorF(`line: '%s' can not find field of id: %v`, line, field)
 		return line
 	}
 	comment := common.FormatComment(line)

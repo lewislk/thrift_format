@@ -1,6 +1,7 @@
 package formater
 
 import (
+	"errors"
 	"fmt"
 	"gitee.com/liukunc9/go-utils/files"
 	"gitee.com/liukunc9/thrift_format/executor"
@@ -29,12 +30,11 @@ func NewFormater(ctx *cli.Context) *Formater {
 func (f *Formater) DoFormat() error {
 	thrift, err := parser.ParseFile(f.filePath, nil, false)
 	if err != nil {
-		logs.Error("parse thrift file err:%v", err)
-		return err
+		return errors.New(fmt.Sprintf("parse thrift file err, '%s' is not valid thrift file", f.filePath))
 	}
 	lines, err := files.ReadFile(f.filePath)
 	if err != nil {
-		logs.Error("read thrift file err:%v", err)
+		return errors.New(fmt.Sprintf("read thrift file err:%v", err))
 	}
 	result, err := executor.NewExecutor(lines, thrift).Exec(f.lineSelectStart, f.lineSelectEnd)
 	if err != nil {
@@ -43,8 +43,7 @@ func (f *Formater) DoFormat() error {
 	if f.overwrite {
 		err := files.OverwriteFile(f.filePath, result)
 		if err != nil {
-			logs.Error("write output err:%v", err)
-			return err
+			return errors.New(fmt.Sprintf("write output err:%v", err))
 		}
 	} else {
 		fmt.Println(result)

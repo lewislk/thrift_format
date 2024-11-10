@@ -69,7 +69,7 @@ func GetAnnotation(annotations []*parser.Annotation) string {
 		}
 		unquote, err := strconv.Unquote(fmt.Sprintf(`"%s"`, val))
 		if err != nil {
-			logs.Warn("Unquote error: %v", val)
+			logs.WarnF("Unquote error: %v", val)
 			buf.WriteString(fmt.Sprintf(`%s = '%s',`, annotation.GetKey(), val))
 			continue
 		}
