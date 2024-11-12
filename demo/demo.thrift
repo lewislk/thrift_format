@@ -2,7 +2,7 @@ include "base.thrift"
 
 enum SexType{
 Male=0(tag.test="male")
-    Female=1(tag.test="female")
+    Female=1(go.tag='json:\"female\"')
 }
 
 struct CreateReq {
