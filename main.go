@@ -19,7 +19,7 @@ func main() {
 		Name:    "thrift_format",
 		Usage:   "thrift_format -f `FilePath`",
 		Action:  action,
-		Version: "1.0.2",
+		Version: "1.0.3",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "file",

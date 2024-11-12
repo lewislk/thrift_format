@@ -63,13 +63,13 @@ func GetAnnotation(annotations []*parser.Annotation) string {
 			continue
 		}
 		val := annotation.GetValues()[0]
-		if strings.Contains(val, "\"") {
+		if strings.Contains(val, "\"") && !strings.Contains(val, "\\\"") {
 			val = strings.ReplaceAll(val, "\"", "\\\"")
 		}
 		unquote, err := strconv.Unquote(fmt.Sprintf(`"%s"`, val))
 		if err != nil {
 			logs.WarnF("Unquote error: %v", val)
-			buf.WriteString(fmt.Sprintf(`%s = %s, `, annotation.GetKey(), val))
+			buf.WriteString(fmt.Sprintf(`%s = "%s", `, annotation.GetKey(), val))
 			continue
 		}
 		buf.WriteString(fmt.Sprintf(`%s = %s, `, annotation.GetKey(), strconv.Quote(unquote)))
