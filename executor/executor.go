@@ -50,7 +50,7 @@ func (e *Executor) Exec(startLine, endLine int64) (string, error) {
 		if e.curExecution == nil {
 			e.curExecution = factory.GetExecution(e.ctx, prefixType)
 		} else {
-			if !e.curExecution.IsMatch(prefixType) {
+			if !e.curExecution.CanContinue(prefixType) {
 				e.curExecution = factory.GetExecution(e.ctx, prefixType)
 			}
 		}

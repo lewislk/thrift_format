@@ -64,8 +64,8 @@ func NewConstExecution(ctx *mctx.Context) execution.Execution {
 	}
 }
 
-func (e *ConstExecution) IsMatch(prefixType token.Tok) bool {
-	return !e.IsBlockType(prefixType) && e.Ctx.Status == consts.InConst
+func (e *ConstExecution) CanContinue(prefixType token.Tok) bool {
+	return prefixType == token.Const && e.Ctx.Status == consts.InConst
 }
 
 func (e *ConstExecution) Process(prefixType token.Tok) string {

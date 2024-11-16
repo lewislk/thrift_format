@@ -24,7 +24,7 @@ func (e *BaseExecution) IsBlockType(prefixType token.Tok) bool {
 	return false
 }
 
-func (e *BaseExecution) IsMatch(prefixType token.Tok) bool {
+func (e *BaseExecution) CanContinue(prefixType token.Tok) bool {
 	panic("implement me")
 }
 

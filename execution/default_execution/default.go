@@ -21,7 +21,7 @@ func NewDefaultExecution(ctx *mctx.Context) execution.Execution {
 	}
 }
 
-func (e *DefaultExecution) IsMatch(prefixType token.Tok) bool {
+func (e *DefaultExecution) CanContinue(prefixType token.Tok) bool {
 	return !e.IsBlockType(prefixType) && e.Ctx.Status == consts.InOut
 }
 

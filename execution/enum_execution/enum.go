@@ -56,7 +56,7 @@ func NewEnumExecution(ctx *mctx.Context) execution.Execution {
 	}
 }
 
-func (e *EnumExecution) IsMatch(prefixType token.Tok) bool {
+func (e *EnumExecution) CanContinue(prefixType token.Tok) bool {
 	return !e.IsBlockType(prefixType) && e.Ctx.Status == consts.InEnum
 }
 

@@ -75,7 +75,7 @@ func NewStructExecution(ctx *mctx.Context) execution.Execution {
 	}
 }
 
-func (e *StructExecution) IsMatch(prefixType token.Tok) bool {
+func (e *StructExecution) CanContinue(prefixType token.Tok) bool {
 	return !e.IsBlockType(prefixType) && e.Ctx.Status == consts.InStruct
 }
 
