@@ -8,7 +8,7 @@
 
 # 安装
 ```shell
-go install github.com/liukunc9/thrift_format@latest
+go install github.com/lewis-buji/thrift_format@latest
 ```
 
 # 在IDEA中使用

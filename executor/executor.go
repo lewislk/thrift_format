@@ -2,10 +2,10 @@ package executor
 
 import (
 	"github.com/cloudwego/thriftgo/parser"
-	"github.com/liukunc9/thrift_format/common"
-	"github.com/liukunc9/thrift_format/execution"
-	"github.com/liukunc9/thrift_format/factory"
-	"github.com/liukunc9/thrift_format/mctx"
+	"github.com/lewis-buji/thrift_format/common"
+	"github.com/lewis-buji/thrift_format/execution"
+	"github.com/lewis-buji/thrift_format/factory"
+	"github.com/lewis-buji/thrift_format/mctx"
 	"strings"
 )
 

@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/cloudwego/thriftgo/parser"
-	"github.com/liukunc9/go-utils/files"
-	"github.com/liukunc9/thrift_format/executor"
-	"github.com/liukunc9/thrift_format/logs"
+	"github.com/lewis-buji/go-utils/files"
+	"github.com/lewis-buji/thrift_format/executor"
+	"github.com/lewis-buji/thrift_format/logs"
 	"github.com/urfave/cli/v2"
 )
 

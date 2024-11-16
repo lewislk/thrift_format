@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/parser/token"
-	"github.com/liukunc9/go-utils/strs"
-	"github.com/liukunc9/thrift_format/logs"
+	"github.com/lewis-buji/go-utils/strs"
+	"github.com/lewis-buji/thrift_format/logs"
 	"strconv"
 	"strings"
 )

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/liukunc9/thrift_format/formater"
-	"github.com/liukunc9/thrift_format/logs"
+	"github.com/lewis-buji/thrift_format/formater"
+	"github.com/lewis-buji/thrift_format/logs"
 	"github.com/urfave/cli/v2"
 	"os"
 	"runtime/debug"
@@ -19,7 +19,7 @@ func main() {
 		Name:    "thrift_format",
 		Usage:   "thrift_format -f `FilePath`",
 		Action:  action,
-		Version: "1.0.4",
+		Version: "1.0.5",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "file",

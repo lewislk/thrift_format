@@ -1,11 +1,11 @@
-module github.com/liukunc9/thrift_format
+module github.com/lewis-buji/thrift_format
 
 go 1.18
 
 require (
 	github.com/cloudwego/thriftgo v0.2.0
 	github.com/fatih/color v1.18.0
-	github.com/liukunc9/go-utils v1.0.0
+	github.com/lewis-buji/go-utils v1.0.1
 	github.com/urfave/cli/v2 v2.27.5
 )
 
