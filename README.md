@@ -40,6 +40,8 @@ $FilePath$ # The absolute path to the current file.
 $SelectionStartLine$ # The line number where the selection starts.
 
 $SelectionEndLine$ # The line number where the selection ends.
+
+$ProjectFileDir$ # The absolute path to the current project directory.
 ```
 
 [更多请参考官网](https://www.jetbrains.com/help/idea/built-in-macros.html)
