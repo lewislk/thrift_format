@@ -2,9 +2,10 @@ package common
 
 import (
 	"bytes"
+	"strings"
+
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/parser/token"
-	"strings"
 )
 
 func GetPrefixType(line string) token.Tok {

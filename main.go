@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/lewis-buji/thrift_format/formater"
-	"github.com/lewis-buji/thrift_format/logs"
-	"github.com/urfave/cli/v2"
 	"os"
 	"runtime/debug"
+
+	"github.com/lewislk/thrift_format/formater"
+	"github.com/lewislk/thrift_format/logs"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {

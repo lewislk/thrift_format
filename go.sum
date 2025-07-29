@@ -4,8 +4,8 @@ github.com/cpuguy83/go-md2man/v2 v2.0.5 h1:ZtcqGrnekaHpVLArFSe4HK5DoKx1T0rq2DwVB
 github.com/cpuguy83/go-md2man/v2 v2.0.5/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=
 github.com/fatih/color v1.18.0/go.mod h1:4FelSpRwEGDpQ12mAdzqdOukCy4u8WUtOY6lkT/6HfU=
-github.com/lewis-buji/go-utils v1.0.1 h1:65BBI7J2MdnelUD/6YbKXXk+4DHiTKx6hnX4yTKmlF8=
-github.com/lewis-buji/go-utils v1.0.1/go.mod h1:/7Uf1HwDLYGEaVJcj3LzJWXq9cMmeNR5UOHudu7yDU0=
+github.com/lewislk/go-utils v1.0.4 h1:3cKbFW+77avfwpZ2UoXNKzDeSyR65oMohyfmTl/WifY=
+github.com/lewislk/go-utils v1.0.4/go.mod h1:rihNyLnUqJDMMJ+fLHxLo98DxFlMbLfr8UCB7GKvdLc=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
 github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
 github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=

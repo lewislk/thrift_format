@@ -1,12 +1,13 @@
 package executor
 
 import (
-	"github.com/cloudwego/thriftgo/parser"
-	"github.com/lewis-buji/thrift_format/common"
-	"github.com/lewis-buji/thrift_format/execution"
-	"github.com/lewis-buji/thrift_format/factory"
-	"github.com/lewis-buji/thrift_format/mctx"
 	"strings"
+
+	"github.com/cloudwego/thriftgo/parser"
+	"github.com/lewislk/thrift_format/common"
+	"github.com/lewislk/thrift_format/execution"
+	"github.com/lewislk/thrift_format/factory"
+	"github.com/lewislk/thrift_format/mctx"
 )
 
 type Executor struct {

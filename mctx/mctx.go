@@ -2,7 +2,7 @@ package mctx
 
 import (
 	"github.com/cloudwego/thriftgo/parser"
-	"github.com/lewis-buji/thrift_format/consts"
+	"github.com/lewislk/thrift_format/consts"
 )
 
 type Context struct {

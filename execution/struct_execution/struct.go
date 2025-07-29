@@ -2,16 +2,17 @@ package struct_execution
 
 import (
 	"fmt"
+
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/parser/token"
-	"github.com/lewis-buji/go-utils/conv"
-	"github.com/lewis-buji/thrift_format/common"
-	"github.com/lewis-buji/thrift_format/consts"
-	"github.com/lewis-buji/thrift_format/execution"
-	"github.com/lewis-buji/thrift_format/execution/base_execution"
-	"github.com/lewis-buji/thrift_format/logs"
-	"github.com/lewis-buji/thrift_format/mctx"
-	"github.com/lewis-buji/thrift_format/utils"
+	"github.com/lewislk/go-utils/conv"
+	"github.com/lewislk/thrift_format/common"
+	"github.com/lewislk/thrift_format/consts"
+	"github.com/lewislk/thrift_format/execution"
+	"github.com/lewislk/thrift_format/execution/base_execution"
+	"github.com/lewislk/thrift_format/logs"
+	"github.com/lewislk/thrift_format/mctx"
+	"github.com/lewislk/thrift_format/utils"
 )
 
 type StructExecution struct {

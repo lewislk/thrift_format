@@ -3,12 +3,13 @@ package common
 import (
 	"bytes"
 	"fmt"
-	"github.com/cloudwego/thriftgo/parser"
-	"github.com/cloudwego/thriftgo/parser/token"
-	"github.com/lewis-buji/go-utils/strs"
-	"github.com/lewis-buji/thrift_format/logs"
 	"strconv"
 	"strings"
+
+	"github.com/cloudwego/thriftgo/parser"
+	"github.com/cloudwego/thriftgo/parser/token"
+	"github.com/lewislk/go-utils/strs"
+	"github.com/lewislk/thrift_format/logs"
 )
 
 func ConvertConstValue2Str(t *parser.ConstValue) string {

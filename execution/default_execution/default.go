@@ -2,10 +2,10 @@ package default_execution
 
 import (
 	"github.com/cloudwego/thriftgo/parser/token"
-	"github.com/lewis-buji/thrift_format/consts"
-	"github.com/lewis-buji/thrift_format/execution"
-	"github.com/lewis-buji/thrift_format/execution/base_execution"
-	"github.com/lewis-buji/thrift_format/mctx"
+	"github.com/lewislk/thrift_format/consts"
+	"github.com/lewislk/thrift_format/execution"
+	"github.com/lewislk/thrift_format/execution/base_execution"
+	"github.com/lewislk/thrift_format/mctx"
 )
 
 type DefaultExecution struct {
